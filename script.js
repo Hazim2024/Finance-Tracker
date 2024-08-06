@@ -4,7 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const valueInput = document.querySelector('.input-expense-value');
     const submitButton = document.querySelector('.btn-submit-expense');
     const expenseList = document.querySelector('.expense-list');
+    const budgetElement = document.querySelector('#month-budget');
     let currentType = 'Savings';
+    let totalBudget = 0; // Variable to keep track of the total budget
+
+    // Function to update the displayed budget
+    function updateBudgetDisplay() {
+        budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
+    }
 
     document.querySelectorAll('.dropdown-item').forEach(item => {
         item.addEventListener('click', () => {
@@ -21,6 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
             addExpenseItem(description, value, currentType);
             descriptionInput.value = '';
             valueInput.value = '';
+
+            // Update total budget
+            if (currentType === 'Expense') {
+                totalBudget -= value; // Subtract if it's an expense
+            } else {
+                totalBudget += value; // Add if it's savings or investment
+            }
+
+            updateBudgetDisplay(); // Update the displayed budget
         } else {
             alert('Please enter a valid description and value.');
         }
@@ -41,7 +57,5 @@ document.addEventListener('DOMContentLoaded', () => {
         expenseItem.appendChild(descDiv);
         expenseItem.appendChild(valueDiv);
         expenseList.appendChild(expenseItem);
-        
     }
 });
-
