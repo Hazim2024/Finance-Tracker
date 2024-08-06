@@ -4,15 +4,15 @@
     box-sizing: border-box;
 }
 
-.clearfix::after{
+.clearfix::after {
     content: "";
     display: table;
     clear: both;
 }
 
 body {
-    color:#555;
-    font-family: Open Sans;
+    color: #555;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     position: relative;
     height: 100vh;
@@ -21,7 +21,7 @@ body {
 
 .left-container {
     height: 100vh;
-    background-image: linear-gradient(#0277bd,#03a9f4);
+    background-image: linear-gradient(#0277bd, #03a9f4);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -31,11 +31,14 @@ body {
     height: 100vh;
     width: 100%;
     position: relative;
+    padding: 20px;
+    background: #f7f7f7;
 }
 
 .header {
-    font-weight: 22px;
     font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .sub-text {
@@ -43,20 +46,20 @@ body {
     font-weight: 400;
 }
 
-.mouth-container {
+.month-container {
     padding-top: 25%;
     padding-left: 5%;
     padding-right: 5%;
 }
 
-.cal-container {
+.calc-container {
     padding-top: 12%;
     padding-left: 5%;
     padding-right: 5%;
 }
 
 .fs-white {
-    color: #ffffff
+    color: #ffffff;
 }
 
 .fs-dark-grey {
@@ -68,9 +71,30 @@ body {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 6px 4px #000000;
+    padding: 10px 20px;
 }
 
 .month-amount {
     font-size: 36px;
     font-weight: 700;
+}
+
+.bottom-border {
+    border-bottom: 1px solid #00446d;
+}
+
+.expense-row {
+    padding: 10px;
+}
+
+.expense-row div {
+    padding: 5px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
 }
