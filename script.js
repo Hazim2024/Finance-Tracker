@@ -6,11 +6,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const expenseList = document.querySelector('.expense-list');
     const budgetElement = document.querySelector('#month-budget');
     let currentType = 'Savings';
-    let totalBudget = 0; // Variable to keep track of the total budget
+    let totalBudget = 0;
+
+    // Initialize categories for the pie chart
+    const categories = {
+        Savings: 0,
+        Expense: 0,
+        Investment: 0
+    };
 
     // Function to update the displayed budget
     function updateBudgetDisplay() {
         budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
+    }
+
+    // Initialize the pie chart
+    const ctx = document.getElementById('expense-chart').getContext('2d');
+    const pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Savings', 'Expense', 'Investment'],
+            datasets: [{
+                data: [categories.Savings, categories.Expense, categories.Investment],
+                backgroundColor: ['#4CAF50', '#FF5733', '#FFC300']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // Function to update the pie chart
+    function updatePieChart() {
+        pieChart.data.datasets[0].data = [
+            categories.Savings,
+            categories.Expense,
+            categories.Investment
+        ];
+        pieChart.update();
     }
 
     document.querySelectorAll('.dropdown-item').forEach(item => {
@@ -31,12 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update total budget
             if (currentType === 'Expense') {
-                totalBudget -= value; // Subtract if it's an expense
-            } else {
-                totalBudget += value; // Add if it's savings or investment
+                totalBudget -= value;
+                categories.Expense += value;
+            } else if (currentType === 'Savings') {
+                totalBudget += value;
+                categories.Savings += value;
+            } else if (currentType === 'Investment') {
+                totalBudget += value;
+                categories.Investment += value;
             }
 
-            updateBudgetDisplay(); // Update the displayed budget
+            updateBudgetDisplay();
+            updatePieChart(); // Update the pie chart with the new values
         } else {
             alert('Please enter a valid description and value.');
         }
