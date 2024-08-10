@@ -6,7 +6,7 @@
     <title>Finance Manager</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -82,17 +82,17 @@
                         <form action="#">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="person"></ion-icon></span>
-                                <input type="text" required>
+                                <input type="text" name="name" required>
                                 <label>Username</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                                <input type="email" required>
+                                <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                                <input type="password" required>
+                                <input type="password" name="password" required>
                                 <label>Password</label>
                             </div>
                             <div class="remember-forgot">
@@ -134,8 +134,38 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="container">
+            <div class="content">
+                <div class="left">
+                    <div class="tittle">Finance Tracking Website</div>
+                    <p>An interactive way of tracking your budget </p>
+                </div>
+                <div class="right">
+                    <div class="links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Designed by Hazim Iftikhar © 2024</p>
+                    <div class="socials">
+                        <a href="https://github.com/Hazim2024" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="https://www.linkedin.com/in/hazim-iftikhar/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+                        <a href="mailto:hazimiftikhar@gmail.com" target="_blank"><ion-icon name="mail"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>

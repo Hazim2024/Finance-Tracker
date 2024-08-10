@@ -11,13 +11,13 @@
 }
 
 body {
-    
-    color: #555;
+    color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     position: relative;
     height: 100vh;
     font-weight: 400;
+    background-color: #4e32bdfa; /* Set a plain black background */
 }
 
 header {
@@ -26,19 +26,17 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 30px;
-    background: lightblue;
+    background: rgba(63, 44, 146, 0.5); /* Make header semi-transparent for better visibility */
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     z-index: 99;
-
 }
 
 .title {
     font-size: 2em;
     color: #fff;
     user-select: none;
-
 }
 
 .navigation a {
@@ -50,7 +48,7 @@ header {
     margin-left: 40px;
 }
 
-.navigation a::after{
+.navigation a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -64,9 +62,9 @@ header {
     transition: .5s;
 }
 
-.navigation a:hover::after{
+.navigation a:hover::after {
     transform-origin: left;
-    transform:scaleX(1) ;
+    transform: scaleX(1);
 }
 
 .navigation .btnLogin-popup {
@@ -84,32 +82,38 @@ header {
     transition: .5s;
 }
 
-.navigation .btnLogin-popup:hover{
+.navigation .btnLogin-popup:hover {
     background: #fff;
     color: #162938;
 }
 
 .wrapper {
-    position: relative;
+    position: fixed; /* Change to fixed to keep it centered when scrolling */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px;
     height: 440px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .5);   
-    border-radius: 20px;   
-    backdrop-filter: blur(20px);   
-    box-shadow: 00 30px ☐ rgba(0, 0, 0, .5);  
-    display: flex;  
-    justify-content: center;  
-    align-items: center; 
+    background: #fff;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     transform: scale(0);
     transition: transform .5s ease, height .2s ease;
-    }
+    z-index: 100;
+}
 
 .wrapper.active-popup {
-    transform: scale(1);
+    transform: scale(1) translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
-    
+
 .wrapper.active {
     height: 520px;
 }
@@ -124,7 +128,7 @@ header {
     transform: translateX(0);
 }
 
-.wrapper.active .form-box.login{
+.wrapper.active .form-box.login {
     transition: none;
     transform: translateX(-400px);
 }
@@ -158,19 +162,19 @@ header {
 }
 
 .form-box h2 {
-    font-size: 2em;   
-    color: #162938; 
+    font-size: 2em;
+    color: #162938;
     text-align: center;
-    }
-    
+}
+
 .input-box {
     position: relative;
     width: 100%;
     height: 50px;
     border-bottom: 2px solid #162938;
     margin: 30px 0;
-    }
-    
+}
+
 .input-box label {
     position: absolute;
     top: 50%;
@@ -184,10 +188,9 @@ header {
 }
 
 .input-box input:focus~label,
-.input-box input:valid~label{
+.input-box input:valid~label {
     top: -5px;
 }
-
 
 .input-box input {
     width: 100%;
@@ -201,13 +204,12 @@ header {
     padding: 0 35px 0 5px;
 }
 
-.input-box .icon{
+.input-box .icon {
     position: absolute;
     right: 8px;
     font-size: 1.2em;
     color: #162938;
     line-height: 57px;
-
 }
 
 .remember-forgot {
@@ -217,7 +219,6 @@ header {
     margin: -15px 0 15px;
     display: flex;
     justify-content: space-between;
-
 }
 
 .remember-forgot label input {
@@ -225,7 +226,7 @@ header {
     margin-right: 3px;
 }
 
-.remember-forgot a{
+.remember-forgot a {
     color: #162938;
 }
 
@@ -244,7 +245,6 @@ header {
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-
 }
 
 .login-register {
@@ -267,9 +267,7 @@ header {
 
 .left-container {
     height: 100vh;
-    background-image: linear-gradient(#0277bd, #03a9f4);
-    background-position: center;
-    background-size: cover;
+    background: transparent; /* No solid background color */
     position: relative;
 }
 
@@ -278,7 +276,11 @@ header {
     width: 100%;
     position: relative;
     padding: 20px;
-    background: #f7f7f7;
+    background: transparent; /* No solid background color */
+}
+
+.form-container {
+    position: relative; /* This positions the form-container relative to right-container */
 }
 
 .header {
@@ -309,12 +311,12 @@ header {
 }
 
 .fs-dark-grey {
-    color: #4e4e4e;
+    color: #fff;
 }
 
 .budget-container {
     display: inline-block;
-    background-color: #ffffff;
+    background-color: #162938;
     border-radius: 8px;
     box-shadow: 0 6px 4px #000000;
     padding: 10px 20px;
@@ -326,7 +328,7 @@ header {
 }
 
 .bottom-border {
-    border-bottom: 1px solid #00446d;
+    border-bottom: 1px solid #fff;
 }
 
 .expense-row {
@@ -343,4 +345,131 @@ header {
 
 .float-right {
     float: right;
+}
+
+button {
+    cursor: pointer;
+}
+
+.chart-container {
+    padding: 5%;
+}
+
+.tracking-text {
+    color: #fff;
+}
+
+.expense-description {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.expense-value {
+    font-size: 22px;
+    font-weight: 400;
+    color: #ee3a3a;
+}
+
+.expense-type {
+    font-size: 20px;
+    font-weight: 500;
+    color: #009242;
+}
+.expense-row {
+    padding: 10px;
+    display: flex; /* Align children horizontally */
+    justify-content: space-between; /* Space out the children */
+    align-items: center; /* Align items vertically */
+}
+
+.expense-row .icon-trash {
+    cursor: pointer;
+    color: #fff; /* Red color for the trash icon */
+    font-size: 1.5em; /* Adjust size as needed */
+}
+
+.expense-row .icon-trash:hover {
+    color: #162938; /* Darker red on hover */
+}
+.icon-edit {
+    cursor: pointer;
+    color: #fff; /* Blue color for the edit icon */
+    font-size: 1.5em; /* Adjust size as needed */
+    margin-left: 10px; /* Space between icons */
+}
+
+.icon-edit:hover {
+    color: #162938; /* Darker blue on hover */
+}
+
+
+.chart-container {
+    background-color: #ffffff95; /* White background */
+    border-radius: 12px;    /* Rounded corners */
+    padding: 60px;          /* Space around the chart */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for some depth */
+    display: inline-block;  /* Adjust to fit around the chart */
+    margin: 50px auto;           /* Center align if needed */
+    max-width: 90%;         /* Limit the max-width */
+    border: 5px solid #162938;
+}
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+    background-color: #fff; /* Background color of the dropdown */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for some depth */
+    padding: 10px 0; /* Padding inside the dropdown */
+    width: 200px; /* Adjust the width as needed */
+}
+
+/* Style for individual dropdown items */
+.dropdown-item {
+    display: block; /* Make items take full width */
+    padding: 10px 20px; /* Padding inside items */
+    color: #333; /* Default text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size */
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Background color on hover */
+    color: #007bff; /* Text color on hover */
+}
+
+/* Optionally, add a focus effect for accessibility */
+.dropdown-item:focus {
+    background-color: #e0e0e0; /* Background color when focused */
+    color: #0056b3; /* Text color when focused */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Style for the input fields in the tracking section */
+.input-expense-description, .input-expense-value {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    background-color: transparent; /* Background color matching the page */
+    color: #fff; /* Text color */
+    font-size: 16px;
+    padding: 0 15px;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Label styles for floating effect */
+.input-expense-description::placeholder, 
+.input-expense-value::placeholder {
+    color: #fff; /* Placeholder color */
+}
+
+/* Focus effect for input fields */
+.input-expense-description:focus, 
+.input-expense-value:focus {
+    border-color: #162938; /* Border color on focus */
+    background-color: rgba(22, 41, 56, 0.5); /* Slightly different background on focus */
+    transform: translateY(-5px); /* Slight upward movement on focus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
 }
