@@ -6,26 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const expenseList = document.querySelector('.expense-list');
     const budgetElement = document.querySelector('#month-budget');
 
-    const wrapper=document.querySelector('.wrapper');
-    const loginLink=document.querySelector('.login-link');
-    const registerLink=document.querySelector('.register-link');
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.btnLogin-popup');
     const iconClose = document.querySelector('.icon-close');
-    
+    const aboutLink = document.getElementById('about-link');
+    const contactLink = document.getElementById('contact-link');
 
-    registerLink.addEventListener('click',()=>{
-        wrapper.classList.add('active');
-    });
-    loginLink.addEventListener('click',()=>{
-        wrapper.classList.remove('active');
-    });
-    btnPopup.addEventListener('click',()=>{
-        wrapper.classList.add('active-popup');
-    });
-    iconClose.addEventListener('click',()=>{
-        wrapper.classList.remove('active-popup');
-    });
+    const loginForm = document.querySelector('.login-form'); // Assuming login form is defined with this class
+    const registerForm = document.querySelector('.register-form'); // Assuming register form is defined with this class
 
+    // Initialize current type and total budget
     let currentType = 'Savings';
     let totalBudget = 0;
 
@@ -103,66 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function addExpenseItem(description, value, type) {
-        const expenseItem = document.createElement('div');
-        expenseItem.classList.add('expense-row', 'clearfix', 'bottom-border');
-        
-        const descDiv = document.createElement('div');
-        descDiv.classList.add('float-left');
-        descDiv.innerText = `${type}: ${description}`;
-
-        const valueDiv = document.createElement('div');
-        valueDiv.classList.add('float-right');
-        valueDiv.innerHTML = `&#36;${value.toFixed(2)}`;
-
-        expenseItem.appendChild(descDiv);
-        expenseItem.appendChild(valueDiv);
-        expenseList.appendChild(expenseItem);
-    }
-    function addExpenseItem(description, value, type) {
-        const expenseItem = document.createElement('div');
-        expenseItem.classList.add('expense-row', 'clearfix', 'bottom-border');
-        
-        const descDiv = document.createElement('div');
-        descDiv.classList.add('float-left');
-        descDiv.innerText = `${type}: ${description}`;
-    
-        const valueDiv = document.createElement('div');
-        valueDiv.classList.add('float-right');
-        valueDiv.innerHTML = `&#36;${value.toFixed(2)}`;
-    
-        // Create trash icon
-        const trashIcon = document.createElement('span');
-        trashIcon.classList.add('icon-trash');
-        trashIcon.innerHTML = '<ion-icon name="trash-outline"></ion-icon>'; // Trash icon
-    
-        // Add event listener to trash icon
-        trashIcon.addEventListener('click', () => {
-            // Remove item from the list
-            expenseItem.remove();
-    
-            // Update the budget and chart
-            if (type === 'Expense') {
-                totalBudget += value;
-                categories.Expense -= value;
-            } else if (type === 'Savings') {
-                totalBudget -= value;
-                categories.Savings -= value;
-            } else if (type === 'Investment') {
-                totalBudget -= value;
-                categories.Investment -= value;
-            }
-    
-            updateBudgetDisplay();
-            updatePieChart(); // Update the pie chart with the new values
-        });
-    
-        expenseItem.appendChild(descDiv);
-        expenseItem.appendChild(valueDiv);
-        expenseItem.appendChild(trashIcon); // Append trash icon
-        expenseList.appendChild(expenseItem);
-    }
-    
     function addExpenseItem(description, value, type) {
         const expenseItem = document.createElement('div');
         expenseItem.classList.add('expense-row', 'clearfix', 'bottom-border');
@@ -268,5 +200,43 @@ document.addEventListener('DOMContentLoaded', () => {
         expenseItem.appendChild(trashIcon); // Append trash icon
         expenseList.appendChild(expenseItem);
     }
-    
+
+    // Show registration form when "About" link is clicked
+    aboutLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        wrapper.classList.add('active-popup');
+        wrapper.classList.add('active'); // Show registration form
+        loginForm.style.transform = 'translateX(-400px)';
+        registerForm.style.transform = 'translateX(0)';
+    });
+
+    // Show login form when "Contact" link is clicked
+    contactLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        wrapper.classList.add('active-popup');
+        wrapper.classList.remove('active'); // Ensure registration is not shown
+        loginForm.style.transform = 'translateX(0)';
+        registerForm.style.transform = 'translateX(400px)';
+    });
+
+    // Close the form when the close button is clicked
+    iconClose.addEventListener('click', function() {
+        wrapper.classList.remove('active-popup');
+    });
+
+    // Switch to registration form from login
+    registerLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        wrapper.classList.add('active');
+        loginForm.style.transform = 'translateX(-400px)';
+        registerForm.style.transform = 'translateX(0)';
+    });
+
+    // Switch to login form from registration
+    loginLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        wrapper.classList.remove('active');
+        loginForm.style.transform = 'translateX(0)';
+        registerForm.style.transform = 'translateX(400px)';
+    });
 });
