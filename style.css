@@ -15,7 +15,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     position: relative;
-    height: 100vh;
+    height: auto;
     font-weight: 400;
     background-color: #4e32bdfa; /* Set a plain black background */
 }
@@ -494,7 +494,7 @@ button {
 footer {
     background: linear-gradient(to bottom, #162938 0%, #162938 50%, #162938 100%);
     color: #fff;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 footer a {
@@ -551,7 +551,12 @@ footer .socials {
     font-size: 30px; /* Adjust size here */
     transition: transform 0.2s; /* Smooth scaling effect */
 }
-
+.quick-links-title {
+    font-size: 20px; /* Set font size to be smaller */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 10px; /* Add some space below the heading */
+    text-align: left;
+}
 /* Optional: Add a hover effect */
 .socials ion-icon:hover {
     transform: scale(1.1); /* Slightly increase size on hover */

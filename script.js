@@ -1,21 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Elements for expense tracking
     const expenseTypeElement = document.querySelector('.tracking-text');
     const descriptionInput = document.querySelector('.input-expense-description');
     const valueInput = document.querySelector('.input-expense-value');
     const submitButton = document.querySelector('.btn-submit-expense');
     const expenseList = document.querySelector('.expense-list');
     const budgetElement = document.querySelector('#month-budget');
+    const downloadButton = document.querySelector('#download-button'); // Ensure this element exists
 
+    // Elements for login and registration forms
     const wrapper = document.querySelector('.wrapper');
     const loginLink = document.querySelector('.login-link');
     const registerLink = document.querySelector('.register-link');
-    const btnPopup = document.querySelector('.btnLogin-popup');
     const iconClose = document.querySelector('.icon-close');
     const aboutLink = document.getElementById('about-link');
     const contactLink = document.getElementById('contact-link');
 
     const loginForm = document.querySelector('.login-form'); // Assuming login form is defined with this class
     const registerForm = document.querySelector('.register-form'); // Assuming register form is defined with this class
+
+    // User accounts object
+    const userAccounts = {};
 
     // Initialize current type and total budget
     let currentType = 'Savings';
@@ -27,11 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         Expense: 0,
         Investment: 0
     };
-
-    // Function to update the displayed budget
-    function updateBudgetDisplay() {
-        budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
-    }
 
     // Initialize the pie chart
     const ctx = document.getElementById('expense-chart').getContext('2d');
@@ -50,6 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Function to update the displayed budget
+    function updateBudgetDisplay() {
+        budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
+    }
+
     // Function to update the pie chart
     function updatePieChart() {
         pieChart.data.datasets[0].data = [
@@ -60,41 +65,47 @@ document.addEventListener('DOMContentLoaded', () => {
         pieChart.update();
     }
 
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', () => {
-            currentType = item.innerText;
-            expenseTypeElement.innerText = `Tracking ${currentType}`;
-        });
-    });
+    // Function to update the download button visibility
+    function updateDownloadButtonVisibility() {
+        downloadButton.style.display = expenseList.children.length > 0 ? 'block' : 'none';
+    }
 
-    submitButton.addEventListener('click', () => {
-        const description = descriptionInput.value.trim();
-        const value = parseFloat(valueInput.value.trim());
-
-        if (description && !isNaN(value) && value > 0) {
-            addExpenseItem(description, value, currentType);
-            descriptionInput.value = '';
-            valueInput.value = '';
-
-            // Update total budget
-            if (currentType === 'Expense') {
-                totalBudget -= value;
-                categories.Expense += value;
-            } else if (currentType === 'Savings') {
-                totalBudget += value;
-                categories.Savings += value;
-            } else if (currentType === 'Investment') {
-                totalBudget += value;
-                categories.Investment += value;
-            }
-
-            updateBudgetDisplay();
-            updatePieChart(); // Update the pie chart with the new values
+    // Function to handle user registration
+    function registerUser(username, password) {
+        if (userAccounts[username]) {
+            alert('Username already exists. Please choose another.');
         } else {
-            alert('Please enter a valid description and value.');
+            userAccounts[username] = { password, items: [] };
+            alert('Registration successful. Please login.');
+            loginLink.click(); // Switch to login form
         }
-    });
+    }
 
+    // Function to handle user login
+    function loginUser(username, password) {
+        const user = userAccounts[username];
+        if (user && user.password === password) {
+            alert('Login successful!');
+            wrapper.classList.remove('active-popup');
+            loadUserItems(username);
+        } else {
+            alert('Invalid username or password.');
+        }
+    }
+
+    // Load user items
+    function loadUserItems(username) {
+        const user = userAccounts[username];
+        if (user) {
+            expenseList.innerHTML = ''; // Clear current list
+            user.items.forEach(item => {
+                addExpenseItem(item.description, item.value, item.type);
+            });
+            updateDownloadButtonVisibility(); // Update the download button visibility
+        }
+    }
+
+    // Function to add an expense item
     function addExpenseItem(description, value, type) {
         const expenseItem = document.createElement('div');
         expenseItem.classList.add('expense-row', 'clearfix', 'bottom-border');
@@ -136,6 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
             updateBudgetDisplay();
             updatePieChart(); // Update the pie chart with the new values
+            
+            updateDownloadButtonVisibility(); // Update the download button visibility
         });
     
         // Add event listener to edit icon
@@ -199,7 +212,66 @@ document.addEventListener('DOMContentLoaded', () => {
         expenseItem.appendChild(editIcon); // Append edit icon
         expenseItem.appendChild(trashIcon); // Append trash icon
         expenseList.appendChild(expenseItem);
+
+        // Update download button visibility after adding item
+        updateDownloadButtonVisibility();
     }
+
+    // Function to download data as Excel
+    function downloadExcel() {
+        const data = [];
+        expenseList.querySelectorAll('.expense-row').forEach(row => {
+            const [type, description] = row.querySelector('.float-left').innerText.split(': ');
+            const value = row.querySelector('.float-right').innerText.slice(1);
+            data.push([type, description, value]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet([['Type', 'Description', 'Value'], ...data]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
+
+        XLSX.writeFile(wb, 'expenses.xlsx');
+    }
+
+    // Handle dropdown selection
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', () => {
+            currentType = item.innerText;
+            expenseTypeElement.innerText = `Tracking ${currentType}`;
+        });
+    });
+
+    // Handle expense submission
+    submitButton.addEventListener('click', () => {
+        const description = descriptionInput.value.trim();
+        const value = parseFloat(valueInput.value.trim());
+
+        if (description && !isNaN(value) && value > 0) {
+            addExpenseItem(description, value, currentType);
+            descriptionInput.value = '';
+            valueInput.value = '';
+
+            // Update total budget
+            if (currentType === 'Expense') {
+                totalBudget -= value;
+                categories.Expense += value;
+            } else if (currentType === 'Savings') {
+                totalBudget += value;
+                categories.Savings += value;
+            } else if (currentType === 'Investment') {
+                totalBudget += value;
+                categories.Investment += value;
+            }
+
+            updateBudgetDisplay();
+            updatePieChart(); // Update the pie chart with the new values
+
+            // Show download button if not already visible
+            updateDownloadButtonVisibility();
+        } else {
+            alert('Please enter a valid description and value.');
+        }
+    });
 
     // Show registration form when "About" link is clicked
     aboutLink.addEventListener('click', function(e) {
@@ -239,4 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.style.transform = 'translateX(0)';
         registerForm.style.transform = 'translateX(400px)';
     });
+
+    // Handle download button click
+    downloadButton.addEventListener('click', downloadExcel);
 });
