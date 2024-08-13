@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Elements for login and registration forms
     const wrapper = document.querySelector('.wrapper');
-    const loginLink = document.querySelector('.login-link');
-    const registerLink = document.querySelector('.register-link');
+    const contactlink = document.querySelector('.login-link');
+    const aboutlink = document.querySelector('.register-link');
     const iconClose = document.querySelector('.icon-close');
     const aboutLink = document.getElementById('about-link');
     const contactLink = document.getElementById('contact-link');
 
-    const loginForm = document.querySelector('.login-form'); // Assuming login form is defined with this class
-    const registerForm = document.querySelector('.register-form'); // Assuming register form is defined with this class
+    const contactform = document.querySelector('.contact-form'); // Assuming login form is defined with this class
+    const aboutform = document.querySelector('.about-form'); // Assuming register form is defined with this class
 
     // User accounts object
     const userAccounts = {};
@@ -85,21 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             userAccounts[username] = { password, items: [] };
             alert('Registration successful. Please login.');
-            loginLink.click(); // Switch to login form
+            contactlink.click(); // Switch to login form
         }
     }
 
-    // Function to handle user login
-    function loginUser(username, password) {
-        const user = userAccounts[username];
-        if (user && user.password === password) {
-            alert('Login successful!');
-            wrapper.classList.remove('active-popup');
-            loadUserItems(username);
-        } else {
-            alert('Invalid username or password.');
-        }
-    }
+
 
     // Load user items
     function loadUserItems(username) {
@@ -302,8 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         wrapper.classList.add('active-popup');
         wrapper.classList.add('active'); // Show registration form
-        loginForm.style.transform = 'translateX(-400px)';
-        registerForm.style.transform = 'translateX(0)';
+        contactform.style.transform = 'translateX(-400px)';
+        aboutform.style.transform = 'translateX(0)';
     });
 
     // Show login form when "Contact" link is clicked
@@ -311,8 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         wrapper.classList.add('active-popup');
         wrapper.classList.remove('active'); // Ensure registration is not shown
-        loginForm.style.transform = 'translateX(0)';
-        registerForm.style.transform = 'translateX(400px)';
+        contactform.style.transform = 'translateX(0)';
+        aboutform.style.transform = 'translateX(400px)';
     });
 
     // Close the form when the close button is clicked
@@ -320,20 +310,20 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.classList.remove('active-popup');
     });
 
-    // Switch to registration form from login
-    registerLink.addEventListener('click', function(e) {
+    // Switch to about form from contact
+    aboutlink.addEventListener('click', function(e) {
         e.preventDefault();
         wrapper.classList.add('active');
-        loginForm.style.transform = 'translateX(-400px)';
-        registerForm.style.transform = 'translateX(0)';
+        contactform.style.transform = 'translateX(-400px)';
+        aboutform.style.transform = 'translateX(0)';
     });
 
-    // Switch to login form from registration
-    loginLink.addEventListener('click', function(e) {
+    // Switch to contact form from about
+    contactlink.addEventListener('click', function(e) {
         e.preventDefault();
         wrapper.classList.remove('active');
-        loginForm.style.transform = 'translateX(0)';
-        registerForm.style.transform = 'translateX(400px)';
+        contactform.style.transform = 'translateX(0)';
+        aboutform.style.transform = 'translateX(400px)';
     });
 
     // Handle download button click

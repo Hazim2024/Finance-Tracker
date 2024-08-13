@@ -248,28 +248,6 @@ header {
     line-height: 57px;
 }
 
-.remember-forgot {
-    font-size: .9em;
-    color: #162938;
-    font-weight: 500;
-    margin: -15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.remember-forgot label input {
-    accent-color: #162938;
-    margin-right: 3px;
-}
-
-.remember-forgot a {
-    color: #162938;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
-}
-
 .btn {
     width: 100%;
     height: 45px;
@@ -450,37 +428,6 @@ button {
     border: 5px solid #162938;
 }
 
-/* Style for the dropdown menu */
-.dropdown-menu {
-    background-color: #fff; /* Background color of the dropdown */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for some depth */
-    padding: 10px 0; /* Padding inside the dropdown */
-    width: 200px; /* Adjust the width as needed */
-}
-
-/* Style for individual dropdown items */
-.dropdown-item {
-    display: block; /* Make items take full width */
-    padding: 10px 20px; /* Padding inside items */
-    color: #333; /* Default text color */
-    text-decoration: none; /* Remove underline */
-    font-size: 16px; /* Font size */
-}
-
-/* Hover effect for dropdown items */
-.dropdown-item:hover {
-    background-color: #f0f0f0; /* Background color on hover */
-    color: #007bff; /* Text color on hover */
-}
-
-/* Optionally, add a focus effect for accessibility */
-.dropdown-item:focus {
-    background-color: #e0e0e0; /* Background color when focused */
-    color: #0056b3; /* Text color when focused */
-    outline: none; /* Remove default focus outline */
-}
-
 /* Style for the input fields in the tracking section */
 .input-expense-description, .input-expense-value {
     position: relative;
@@ -492,7 +439,19 @@ button {
     color: #fff; /* Text color */
     font-size: 16px;
     padding: 0 15px;
-    transition: all 0.3s ease; /* Smooth transition */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+
+/* Focus and hover effects for input fields */
+.input-expense-description:hover,
+.input-expense-value:hover,
+.input-expense-description:focus,
+.input-expense-value:focus {
+    border-color: #162938; /* Border color on hover or focus */
+    box-shadow: 0 0 8px #162938; /* Adding glow effect */
+    background-color: rgba(22, 41, 56, 0.5); /* Slightly different background on hover or focus */
+    transform: translateY(-5px); /* Slight upward movement on hover or focus */
 }
 
 /* Label styles for floating effect */
