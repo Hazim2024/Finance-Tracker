@@ -447,16 +447,16 @@ button {
 .input-expense-value:hover,
 .input-expense-description:focus,
 .input-expense-value:focus {
-    border-color: #162938; /* Border color on hover or focus */
-    box-shadow: 0 0 8px #162938; /* Adding glow effect */
-    background-color: rgba(22, 41, 56, 0.5); /* Slightly different background on hover or focus */
-    transform: translateY(-5px); /* Slight upward movement on hover or focus */
+    border-color: #162938; 
+    box-shadow: 0 0 8px #162938; 
+    background-color: rgba(22, 41, 56, 0.5); 
+    transform: translateY(-5px); 
 }
 
 /* Label styles for floating effect */
 .input-expense-description::placeholder, 
 .input-expense-value::placeholder {
-    color: #fff; /* Placeholder color */
+    color: #fff; 
 }
 
 /* Focus effect for input fields */
