@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update item
                 descDiv.innerText = `${type}: ${newDescription}`;
                 valueDiv.innerHTML = `&#36;${newValue.toFixed(2)}`;
-                dateDiv.innerText = `Date: ${newDate}`; // Update date
+                dateDiv.innerText = `Date: ${newDate}`; 
 
                 // Update the budget and chart
                 if (type === 'Expense') {
