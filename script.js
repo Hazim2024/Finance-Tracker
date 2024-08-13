@@ -86,8 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
-
     // Load user items
     function loadUserItems(username) {
         const user = userAccounts[username];
