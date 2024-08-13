@@ -407,39 +407,38 @@ button {
 }
 .icon-edit {
     cursor: pointer;
-    color: #fff; /* Blue color for the edit icon */
-    font-size: 1.5em; /* Adjust size as needed */
-    margin-left: 10px; /* Space between icons */
+    color: #fff; 
+    font-size: 1.5em; 
+    margin-left: 10px; 
 }
 
 .icon-edit:hover {
-    color: #162938; /* Darker blue on hover */
+    color: #162938; 
 }
 
 
 .chart-container {
-    background-color: #ffffff95; /* White background */
-    border-radius: 12px;    /* Rounded corners */
-    padding: 60px;          /* Space around the chart */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for some depth */
-    display: inline-block;  /* Adjust to fit around the chart */
-    margin: 50px auto;           /* Center align if needed */
-    max-width: 90%;         /* Limit the max-width */
+    background-color: #ffffff95; 
+    border-radius: 12px;    
+    padding: 60px;          
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    display: inline-block;  
+    margin: 50px auto;           
+    max-width: 90%;         
     border: 5px solid #162938;
 }
 
-/* Style for the input fields in the tracking section */
 .input-expense-description, .input-expense-value {
     position: relative;
     width: 100%;
     height: 50px;
     border: 2px solid #fff;
     border-radius: 6px;
-    background-color: transparent; /* Background color matching the page */
-    color: #fff; /* Text color */
+    background-color: transparent; 
+    color: #fff; 
     font-size: 16px;
     padding: 0 15px;
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
 
