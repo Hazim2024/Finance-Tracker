@@ -569,16 +569,16 @@ main {
 }
 
 .social-link::before {
-    content: ""; /* Empty content for the decorative effect */
+    content: ""; 
     position: absolute;
     top: 50%;
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(0, 0, 0, 0.1); /* Decorative effect */
+    background: rgba(0, 0, 0, 0.1); 
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease; /* Transition for hover effect */
+    transition: width 0.3s ease, height 0.3s ease; 
 }
 
 .social-link:hover::before {
@@ -587,11 +587,11 @@ main {
 }
 
 .social-link:hover {
-    transform: translateY(-5px); /* Lift the icon on hover */
+    transform: translateY(-5px);
 }   
 
 .social-link:nth-child(1) {
-    color: #162938; /* GitHub icon color */
+    color: #162938; 
 }
 
 .social-link:nth-child(1):hover {
