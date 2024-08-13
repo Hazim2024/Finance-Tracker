@@ -617,7 +617,7 @@ main {
 .date-container {
     display: flex;
     align-items: center;
-    position: relative; /* Positioning context for the icon */
+    position: relative; 
 }
 
 .date-label {
@@ -635,22 +635,22 @@ main {
     background-color: transparent;
     color: #fff;
     font-size: 16px;
-    padding-right: 35px; /* Padding to not overlap the icon */
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for border and shadow */
+    padding-right: 35px; 
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
 
 
 .input-expense-date:hover,
 .input-expense-date:focus {
-    border-color: #162938; /* Highlighting the field on hover or focus */
-    box-shadow: 0 0 8px #162938; /* Adding glow effect */
+    border-color: #162938; 
+    box-shadow: 0 0 8px #162938; 
 }
 
 .input-expense-date:focus + .calendar-icon {
-    transform: translateY(-50%) scale(1.1); /* Slightly enlarges the icon */
+    transform: translateY(-50%) scale(1.1);
 }
 
 .input-expense-date:hover + .calendar-icon {
-    color: #162938; /* Changes icon color on hover */
+    color: #162938; 
 }
