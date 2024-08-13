@@ -595,7 +595,7 @@ main {
 }
 
 .social-link:nth-child(1):hover {
-    color: #128deb; /* GitHub icon hover color */
+    color: #128deb; 
 }
 
 .social-link:nth-child(2) {
