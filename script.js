@@ -54,10 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date().toISOString().split('T')[0];
     dateInput.value = today;
 
-    // Array to store expense items
     const expenses = [];
 
-    // Function to update the displayed budget
     function updateBudgetDisplay() {
         budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
     }
