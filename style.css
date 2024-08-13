@@ -607,7 +607,7 @@ main {
 }
 
 .social-link:nth-child(3) {
-    color: #162938; /* Email icon color */
+    color: #162938; 
 }
 
 .social-link:nth-child(3):hover {
