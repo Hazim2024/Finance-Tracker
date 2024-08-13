@@ -611,7 +611,7 @@ main {
 }
 
 .social-link:nth-child(3):hover {
-    color: #162938; /* Email icon hover color */
+    color: #162938; 
 }
 
 .date-container {
