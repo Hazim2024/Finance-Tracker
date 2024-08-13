@@ -603,7 +603,7 @@ main {
 }
 
 .social-link:nth-child(2):hover {
-    color: #162938; /* LinkedIn icon hover color */
+    color: #162938; 
 }
 
 .social-link:nth-child(3) {
