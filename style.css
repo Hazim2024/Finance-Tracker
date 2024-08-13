@@ -87,6 +87,26 @@ header {
     color: #fff;
 }
 
+.type-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.type-buttons .btn {
+    width: 100px;
+    height: 50px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+}
+.type-buttons .btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+.date-picker {
+    margin-bottom: 20px;
+}
+
 .wrapper {
     position: fixed; /* Change to fixed to keep it centered when scrolling */
     top: 50%;
@@ -633,4 +653,45 @@ main {
 
 .social-link:nth-child(3):hover {
     color: #162938; /* Email icon hover color */
+}
+
+.date-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Positioning context for the icon */
+}
+
+.date-label {
+    font-size: 16px;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.input-expense-date {
+    width: 100%;
+    max-width: 250px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    padding-right: 35px; /* Padding to not overlap the icon */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for border and shadow */
+}
+
+
+
+.input-expense-date:hover,
+.input-expense-date:focus {
+    border-color: #162938; /* Highlighting the field on hover or focus */
+    box-shadow: 0 0 8px #162938; /* Adding glow effect */
+}
+
+.input-expense-date:focus + .calendar-icon {
+    transform: translateY(-50%) scale(1.1); /* Slightly enlarges the icon */
+}
+
+.input-expense-date:hover + .calendar-icon {
+    color: #162938; /* Changes icon color on hover */
 }

@@ -81,8 +81,8 @@
                         <div class="form-box register">
                             <h2>About</h2>
                                 <div class="input-box">
-                                <p class="username-label">Welcome to the Finance Tracker Website! Our goal is to provide an intuitive and effective way to manage your personal budget. With features designed to track your spending, manage savings, and plan investments, we aim to help you achieve financial stability and success.</p>
-                                <p class="username-label">Whether you're looking to monitor your monthly expenses or set financial goals, our platform offers a range of tools to help you stay on top of your finances. Thank you for choosing us as your financial partner!</p>
+                                    <p class="username-label">Welcome to my Finance Tracker Website! As a personal project, I've created this platform to help you manage your budget effectively. With features for tracking spending, managing savings, and planning investments, my aim is to support your financial stability and success.</p>
+                                    <p class="username-label">Whether you need to track daily expenses or optimize your savings, this website offers tools to keep you organized and in control of your finances. Thank you for using this platform!</p>
                                 </div>
                                 <div class="input-box">
                                 </div>
@@ -94,17 +94,17 @@
                                 </div> 
                         </div>
                     </div>
-                    <div class="dropdown open">
-                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenue3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Expense Type
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" id="type-savings">Savings</a>
-                            <a class="dropdown-item" id="type-expense">Expense</a>
-                            <a class="dropdown-item" id="type-investment">Investment</a>
-                        </div>
+                    <div class="type-buttons">
+                        <button class="btn btn-info" id="btn-savings">Savings</button>
+                        <button class="btn btn-info" id="btn-expense">Expense</button>
+                        <button class="btn btn-info" id="btn-investment">Investment</button>
                     </div>
                     <div class="mt-3 tracking-text text-capitalize sub-text bottom-border">Tracking Savings</div>
+                    <div class="date-container mt-3">
+                        <label for="expense-date" class="date-label">Date:</label>
+                        <input id="expense-date" class="input-expense-date" type="date" placeholder="Date">
+                    </div>
+                                      
                     <div class="row mt-4">
                         <div class="col-7">
                             <input class="form-control input-expense-description" type="text" placeholder="Description">

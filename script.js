@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const expenseTypeElement = document.querySelector('.tracking-text');
     const descriptionInput = document.querySelector('.input-expense-description');
     const valueInput = document.querySelector('.input-expense-value');
+    const dateInput = document.querySelector('.input-expense-date'); // Date input element
     const submitButton = document.querySelector('.btn-submit-expense');
     const expenseList = document.querySelector('.expense-list');
     const budgetElement = document.querySelector('#month-budget');
-    const downloadButton = document.querySelector('#download-button'); // Ensure this element exists
+    const downloadButton = document.querySelector('#download-button');
 
     // Elements for login and registration forms
     const wrapper = document.querySelector('.wrapper');
@@ -50,6 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Set default date to today's date
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.value = today;
+
+    // Array to store expense items
+    const expenses = [];
+
     // Function to update the displayed budget
     function updateBudgetDisplay() {
         budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
@@ -67,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update the download button visibility
     function updateDownloadButtonVisibility() {
-        downloadButton.style.display = expenseList.children.length > 0 ? 'block' : 'none';
+        downloadButton.style.display = expenses.length > 0 ? 'block' : 'none';
     }
 
     // Function to handle user registration
@@ -99,40 +107,59 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             expenseList.innerHTML = ''; // Clear current list
             user.items.forEach(item => {
-                addExpenseItem(item.description, item.value, item.type);
+                addExpenseItem(item.description, item.value, item.type, item.date);
             });
             updateDownloadButtonVisibility(); // Update the download button visibility
         }
     }
 
-    // Function to add an expense item
-    function addExpenseItem(description, value, type) {
-        const expenseItem = document.createElement('div');
-        expenseItem.classList.add('expense-row', 'clearfix', 'bottom-border');
-        
+    // Function to add an expense item to the list and array
+    function addExpenseItem(description, value, type, date) {
+        const expenseItem = {
+            type,
+            description,
+            value,
+            date
+        };
+
+        // Add to expenses array
+        expenses.push(expenseItem);
+
+        // Create DOM elements for display
+        const expenseRow = document.createElement('div');
+        expenseRow.classList.add('expense-row', 'clearfix', 'bottom-border');
+
         const descDiv = document.createElement('div');
         descDiv.classList.add('float-left');
         descDiv.innerText = `${type}: ${description}`;
-    
+
         const valueDiv = document.createElement('div');
         valueDiv.classList.add('float-right');
         valueDiv.innerHTML = `&#36;${value.toFixed(2)}`;
-    
+
+        const dateDiv = document.createElement('div');
+        dateDiv.classList.add('float-left');
+        dateDiv.innerText = `Date: ${date}`;
+
         // Create trash icon
         const trashIcon = document.createElement('span');
         trashIcon.classList.add('icon-trash');
-        trashIcon.innerHTML = '<ion-icon name="trash-outline"></ion-icon>'; // Trash icon
-    
+        trashIcon.innerHTML = '<ion-icon name="trash-outline"></ion-icon>';
+
         // Create edit icon
         const editIcon = document.createElement('span');
         editIcon.classList.add('icon-edit');
-        editIcon.innerHTML = '<ion-icon name="pencil-outline"></ion-icon>'; // Edit icon
-    
+        editIcon.innerHTML = '<ion-icon name="pencil-outline"></ion-icon>';
+
         // Add event listener to trash icon
         trashIcon.addEventListener('click', () => {
-            // Remove item from the list
-            expenseItem.remove();
-    
+            // Remove item from the list and array
+            const index = expenses.indexOf(expenseItem);
+            if (index > -1) {
+                expenses.splice(index, 1);
+            }
+            expenseRow.remove();
+
             // Update the budget and chart
             if (type === 'Expense') {
                 totalBudget += value;
@@ -144,24 +171,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalBudget -= value;
                 categories.Investment -= value;
             }
-    
+
             updateBudgetDisplay();
-            updatePieChart(); // Update the pie chart with the new values
-            
-            updateDownloadButtonVisibility(); // Update the download button visibility
+            updatePieChart();
+            updateDownloadButtonVisibility();
         });
-    
+
         // Add event listener to edit icon
         editIcon.addEventListener('click', () => {
             // Open a prompt or modal to edit the item
             const newDescription = prompt('Enter new description:', description);
             const newValue = parseFloat(prompt('Enter new value:', value));
-    
-            if (newDescription && !isNaN(newValue) && newValue > 0) {
+            const newDate = prompt('Enter new date (YYYY-MM-DD):', date);
+
+            if (newDescription && !isNaN(newValue) && newValue > 0 && newDate) {
                 // Update item
                 descDiv.innerText = `${type}: ${newDescription}`;
                 valueDiv.innerHTML = `&#36;${newValue.toFixed(2)}`;
-    
+                dateDiv.innerText = `Date: ${newDate}`; // Update date
+
                 // Update the budget and chart
                 if (type === 'Expense') {
                     totalBudget += value - newValue;
@@ -173,11 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalBudget += newValue - value;
                     categories.Investment += newValue - value;
                 }
-    
+
                 // Update the item type if changed
                 if (confirm('Do you want to change the type?')) {
                     const newType = prompt('Enter new type (Savings, Expense, Investment):', type);
-    
+
                     if (newType && ['Savings', 'Expense', 'Investment'].includes(newType)) {
                         if (type === 'Expense') {
                             categories.Expense -= value;
@@ -186,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else if (type === 'Investment') {
                             categories.Investment -= value;
                         }
-    
+
                         if (newType === 'Expense') {
                             categories.Expense += newValue;
                         } else if (newType === 'Savings') {
@@ -194,49 +222,43 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else if (newType === 'Investment') {
                             categories.Investment += newValue;
                         }
-    
+
                         descDiv.innerText = `${newType}: ${newDescription}`;
                         type = newType; // Update type
                     }
                 }
-    
+
                 updateBudgetDisplay();
                 updatePieChart(); // Update the pie chart with the new values
             } else {
-                alert('Please enter valid description and value.');
+                alert('Please enter valid description, value, and date.');
             }
         });
-    
-        expenseItem.appendChild(descDiv);
-        expenseItem.appendChild(valueDiv);
-        expenseItem.appendChild(editIcon); // Append edit icon
-        expenseItem.appendChild(trashIcon); // Append trash icon
-        expenseList.appendChild(expenseItem);
 
-        // Update download button visibility after adding item
+        // Append elements
+        expenseRow.appendChild(descDiv);
+        expenseRow.appendChild(valueDiv);
+        expenseRow.appendChild(dateDiv);
+        expenseRow.appendChild(editIcon); // Append edit icon
+        expenseRow.appendChild(trashIcon); // Append trash icon
+        expenseList.appendChild(expenseRow);
+
         updateDownloadButtonVisibility();
     }
 
     // Function to download data as Excel
     function downloadExcel() {
-        const data = [];
-        expenseList.querySelectorAll('.expense-row').forEach(row => {
-            const [type, description] = row.querySelector('.float-left').innerText.split(': ');
-            const value = row.querySelector('.float-right').innerText.slice(1);
-            data.push([type, description, value]);
-        });
-
-        const ws = XLSX.utils.aoa_to_sheet([['Type', 'Description', 'Value'], ...data]);
+        const data = expenses.map(item => [item.type, item.description, item.value, item.date]);
+        const ws = XLSX.utils.aoa_to_sheet([['Type', 'Description', 'Value', 'Date'], ...data]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
-
         XLSX.writeFile(wb, 'expenses.xlsx');
     }
 
-    // Handle dropdown selection
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', () => {
-            currentType = item.innerText;
+    // Handle button clicks for expense type
+    document.querySelectorAll('.type-buttons button').forEach(button => {
+        button.addEventListener('click', () => {
+            currentType = button.innerText;
             expenseTypeElement.innerText = `Tracking ${currentType}`;
         });
     });
@@ -245,11 +267,13 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.addEventListener('click', () => {
         const description = descriptionInput.value.trim();
         const value = parseFloat(valueInput.value.trim());
+        const date = dateInput.value; // Get the date
 
-        if (description && !isNaN(value) && value > 0) {
-            addExpenseItem(description, value, currentType);
+        if (description && !isNaN(value) && value > 0 && date) {
+            addExpenseItem(description, value, currentType, date);
             descriptionInput.value = '';
             valueInput.value = '';
+            dateInput.value = today; // Reset to default date
 
             // Update total budget
             if (currentType === 'Expense') {
@@ -269,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show download button if not already visible
             updateDownloadButtonVisibility();
         } else {
-            alert('Please enter a valid description and value.');
+            alert('Please enter a valid description, value, and date.');
         }
     });
 
