@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elements for expense tracking
     const expenseTypeElement = document.querySelector('.tracking-text');
     const descriptionInput = document.querySelector('.input-expense-description');
     const valueInput = document.querySelector('.input-expense-value');
@@ -17,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutLink = document.getElementById('about-link');
     const contactLink = document.getElementById('contact-link');
 
-    const contactform = document.querySelector('.contact-form'); // Assuming login form is defined with this class
-    const aboutform = document.querySelector('.about-form'); // Assuming register form is defined with this class
+    const contactform = document.querySelector('.contact-form'); 
+    const aboutform = document.querySelector('.about-form'); 
 
     // User accounts object
     const userAccounts = {};
@@ -85,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             userAccounts[username] = { password, items: [] };
             alert('Registration successful. Please login.');
-            contactlink.click(); // Switch to login form
+            contactlink.click(); 
         }
     }
 
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadUserItems(username) {
         const user = userAccounts[username];
         if (user) {
-            expenseList.innerHTML = ''; // Clear current list
+            expenseList.innerHTML = ''; 
             user.items.forEach(item => {
                 addExpenseItem(item.description, item.value, item.type, item.date);
             });
