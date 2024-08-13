@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         descDiv.innerText = `${newType}: ${newDescription}`;
-                        type = newType; // Update type
+                        type = newType; 
                     }
                 }
 
@@ -229,8 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
         expenseRow.appendChild(descDiv);
         expenseRow.appendChild(valueDiv);
         expenseRow.appendChild(dateDiv);
-        expenseRow.appendChild(editIcon); // Append edit icon
-        expenseRow.appendChild(trashIcon); // Append trash icon
+        expenseRow.appendChild(editIcon); 
+        expenseRow.appendChild(trashIcon); 
         expenseList.appendChild(expenseRow);
 
         updateDownloadButtonVisibility();
@@ -257,13 +257,13 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.addEventListener('click', () => {
         const description = descriptionInput.value.trim();
         const value = parseFloat(valueInput.value.trim());
-        const date = dateInput.value; // Get the date
+        const date = dateInput.value; 
 
         if (description && !isNaN(value) && value > 0 && date) {
             addExpenseItem(description, value, currentType, date);
             descriptionInput.value = '';
             valueInput.value = '';
-            dateInput.value = today; // Reset to default date
+            dateInput.value = today; 
 
             // Update total budget
             if (currentType === 'Expense') {
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aboutLink.addEventListener('click', function(e) {
         e.preventDefault();
         wrapper.classList.add('active-popup');
-        wrapper.classList.add('active'); // Show registration form
+        wrapper.classList.add('active'); 
         contactform.style.transform = 'translateX(-400px)';
         aboutform.style.transform = 'translateX(0)';
     });
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     contactLink.addEventListener('click', function(e) {
         e.preventDefault();
         wrapper.classList.add('active-popup');
-        wrapper.classList.remove('active'); // Ensure registration is not shown
+        wrapper.classList.remove('active'); 
         contactform.style.transform = 'translateX(0)';
         aboutform.style.transform = 'translateX(400px)';
     });
