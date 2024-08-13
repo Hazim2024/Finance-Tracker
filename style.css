@@ -536,9 +536,9 @@ footer .socials {
     margin-bottom: 10px; /* Add some space below the heading */
     text-align: left;
 }
-/* Optional: Add a hover effect */
+
 .socials ion-icon:hover {
-    transform: scale(1.1); /* Slightly increase size on hover */
+    transform: scale(1.1); 
 }
 
 @media (max-width: 768px) {
@@ -556,16 +556,16 @@ main {
     display: flex;
     flex-direction: column;
     padding: 2rem 0;
-    overflow-y: auto; /* Allow vertical scrolling if content grows */
+    overflow-y: auto; 
 }
 
 .social-link {
-    display: inline-block; /* Make each link act as an inline block */
-    margin: 0 10px; /* Space between each icon */
-    font-size: 32px; /* Size of the icons */
-    color: #162938; /* Default color */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    position: relative; /* Position for pseudo-elements */
+    display: inline-block; 
+    margin: 0 10px; 
+    font-size: 32px; 
+    color: #162938; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+    position: relative; 
 }
 
 .social-link::before {
