@@ -3,8 +3,8 @@
 </p>
 
 
-<p align="center">
-  Finance Tracker 
+# <p align="center">
+  # Finance Tracker 
 </p>
 
 ## Overview
