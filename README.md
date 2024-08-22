@@ -1,8 +1,10 @@
 <p align="center">
   <img src="https://github.com/Hazim2024/Finance-Tracker/blob/main/wallet.svg" alt="Wallet Image" width="120" height="auto">
-  <br>
-  <h1>Finance Tracker</h1>
 </p>
+<p align="center">
+  <strong style="font-size: 2em;">Finance Tracker</strong>
+</p>
+
 
 
 ## Overview
