@@ -49,4 +49,4 @@ If you have any questions or feedback, feel free to reach out:
 
 Email: hazimiftikhar@gmail.com
 
-LinkedIn: Hazim Iftikhar (https://www.linkedin.com/in/hazim-iftikhar/) 
+LinkedIn: [Hazim Iftikhar](https://www.linkedin.com/in/hazim-iftikhar/) 
