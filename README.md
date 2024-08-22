@@ -13,9 +13,9 @@ The *[Finance Tracker Website](https://hazim2024.github.io/Finance-Tracker/)* is
 * **User-Friendly Interface:** Intuitive design with responsive elements to enhance user experience.
 
 ## Benefits
-* **Time-Saving:** By automating financial tracking and calculations, the platform can reduce the time users spend managing their finances by up to 30% compared to manual methods.
-* **Enhanced Financial Organization:** With structured categorization of income and expenses, users can achieve better financial clarity and improved budgeting, potentially leading to 20% more efficient savings management.
-* **Improved Decision-Making:** Data visualization tools provide clear insights into spending habits, allowing users to make more informed decisions and potentially reducing unnecessary expenses by 15-25%.
+* **Time-Saving:** By automating financial tracking and calculations, the platform can reduce the time users spend managing their finances by up to *30%* compared to manual methods.
+* **Enhanced Financial Organization:** With structured categorization of income and expenses, users can achieve better financial clarity and improved budgeting, potentially leading to *20%* more efficient savings management.
+* **Improved Decision-Making:** Data visualization tools provide clear insights into spending habits, allowing users to make more informed decisions and potentially reducing unnecessary expenses by *15-25%*.
 
 ## Technologies Used
 * **Frontend:**
