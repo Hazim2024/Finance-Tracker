@@ -14,23 +14,16 @@ The Finance Tracker Website is a personal finance management tool designed to he
 * Improved Decision-Making: Data visualization tools provide clear insights into spending habits, allowing users to make more informed decisions and potentially reducing unnecessary expenses by 15-25%.
 
 ## Technologies Used
-*Frontend:
-
-  *HTML5, CSS3
-  *JavaScript
-  *Bootstrap 4
-  
-*Charting:
-
-  *Chart.js
-  
-*Backend:
-
-  *JavaScript for DOM manipulation and event handling
-  
-*Export Functionality:
-
-  *XLSX.js for generating Excel files
+* Frontend:
+  * HTML5, CSS3
+  * JavaScript
+  * Bootstrap 4
+* Charting:
+  * Chart.js
+* Backend:
+  * JavaScript for DOM manipulation and event handling
+* Export Functionality:
+  * XLSX.js for generating Excel files
   
 ## Requirements
 To run this project locally, you'll need:
