@@ -1,4 +1,4 @@
-![wallet](https://github.com/user-attachments/assets/25f73331-7069-4a61-a72b-b446fbd3f8b8)# Finance-Tracker
+<img src="[relative/path/in/repository/to/image.svg](https://github.com/user-attachments/assets/25f73331-7069-4a61-a72b-b446fbd3f8b8)" width="128"/>
 ## Overview
 The *[Finance Tracker Website](https://hazim2024.github.io/Finance-Tracker/)* is a personal finance management tool designed to help users effectively track their income, expenses, and savings. It offers features such as category selection, data visualization, and the ability to export financial records to an Excel file. This project was built as part of a personal endeavor to improve financial literacy and provide users with an intuitive platform to manage their finances.
 
