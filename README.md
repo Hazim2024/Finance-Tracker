@@ -1,6 +1,10 @@
 # Finance-Tracker
 ## Overview
-The Finance Tracker Website is a personal finance management tool designed to help users effectively track their income, expenses, and savings. It offers features such as category selection, data visualization, and the ability to export financial records to an Excel file. This project was built as part of a personal endeavor to improve financial literacy and provide users with an intuitive platform to manage their finances.
+The [Finance Tracker Website](https://hazim2024.github.io/Finance-Tracker/) is a personal finance management tool designed to help users effectively track their income, expenses, and savings. It offers features such as category selection, data visualization, and the ability to export financial records to an Excel file. This project was built as part of a personal endeavor to improve financial literacy and provide users with an intuitive platform to manage their finances.
+
+## How to Use
+1. Open your web browser and visit the following link: https://hazim2024.github.io/Finance-Tracker/
+2. Start tracking your income, expenses, and savings by entering the relevant details in the form provided.
 
 ## Features
 * Income, Expense, and Savings Tracking: Easily log and categorize your financial transactions.
@@ -30,11 +34,6 @@ To run this project locally, you'll need:
 * A modern web browser (Chrome, Firefox, Safari, etc.)
 * No additional dependencies are required.
 
-## How to Use
-1. Open your web browser and visit the following link: Finance Tracker
-2. Start tracking your income, expenses, and savings by entering the relevant details in the form provided.
-3. View the data visualization to gain insights into your financial habits.
-4. If needed, export your financial data to Excel for further analysis.
 
 ## Contact
 If you've any questions or suggestions for improving my project, I'd love to hear from you! Feel free to reach out:
