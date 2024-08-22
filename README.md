@@ -1,4 +1,7 @@
-<img src="https://github.com/Hazim2024/Finance-Tracker/blob/main/wallet.svg" alt="Wallet Image" width="120" height="auto">
+<p align="center">
+  <img src="https://github.com/Hazim2024/Finance-Tracker/blob/main/wallet.svg" alt="Wallet Image" width="120" height="auto">
+</p>
+
 
 # Finance Tracker 
 
