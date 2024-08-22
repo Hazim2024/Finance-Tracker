@@ -48,4 +48,5 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 If you have any questions or feedback, feel free to reach out:
 
 Email: hazimiftikhar@gmail.com
-LinkedIn: Hazim Iftikhar
+
+LinkedIn: Hazim Iftikhar (https://www.linkedin.com/in/hazim-iftikhar/) 
