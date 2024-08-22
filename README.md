@@ -18,15 +18,13 @@ The *[Finance Tracker Website](https://hazim2024.github.io/Finance-Tracker/)* is
 * **Improved Decision-Making:** Data visualization tools provide clear insights into spending habits, allowing users to make more informed decisions and potentially reducing unnecessary expenses by 15-25%.
 
 ## Technologies Used
-* Frontend:
+* **Frontend:**
   * HTML5, CSS3
-  * JavaScript
   * Bootstrap 4
-* Charting:
-  * Chart.js
-* Backend:
   * JavaScript for DOM manipulation and event handling
-* Export Functionality:
+* **Charting:**
+  * Chart.js
+* **Export Functionality:**
   * XLSX.js for generating Excel files
   
 ## Requirements
