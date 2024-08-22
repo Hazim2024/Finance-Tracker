@@ -4,7 +4,7 @@
 
 
 <p align="center">
-  <strong>Finance Tracker</strong>
+  <h1>Finance Tracker</h1>
 </p>
 
 ## Overview
