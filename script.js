@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const expenses = [];
 
     function updateBudgetDisplay() {
-        budgetElement.innerHTML = `&#36;${totalBudget.toFixed(2)}`;
+        budgetElement.innerHTML = `&#163;${totalBudget.toFixed(2)}`;
     }
 
     // Function to update the pie chart
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const valueDiv = document.createElement('div');
         valueDiv.classList.add('float-right');
-        valueDiv.innerHTML = `&#36;${value.toFixed(2)}`;
+        valueDiv.innerHTML = `&#163;${value.toFixed(2)}`;
 
         const dateDiv = document.createElement('div');
         dateDiv.classList.add('float-left');
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (newDescription && !isNaN(newValue) && newValue > 0 && newDate) {
                 // Update item
                 descDiv.innerText = `${type}: ${newDescription}`;
-                valueDiv.innerHTML = `&#36;${newValue.toFixed(2)}`;
+                valueDiv.innerHTML = `&#163;${newValue.toFixed(2)}`;
                 dateDiv.innerText = `Date: ${newDate}`; 
 
                 // Update the budget and chart
