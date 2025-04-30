@@ -470,7 +470,7 @@ button {
 
 /* Footer */
 footer {
-    background: linear-gradient(to bottom, #162938 0%, #162938 50%, #162938 100%);
+    background: #5f46c4fa;
     color: #fff;
     padding-top: 10px;
 }
