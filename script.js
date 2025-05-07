@@ -19,10 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactform = document.querySelector('.contact-form'); 
     const aboutform = document.querySelector('.about-form'); 
 
-    // User accounts object
     const userAccounts = {};
 
-    // Initialize current type and total budget
     let currentType = 'Savings';
     let totalBudget = 0;
 
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             user.items.forEach(item => {
                 addExpenseItem(item.description, item.value, item.type, item.date);
             });
-            updateDownloadButtonVisibility(); // Update the download button visibility
+            updateDownloadButtonVisibility(); // update the download button visibility
         }
     }
 
@@ -107,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             date
         };
 
-        // Add to expenses array
         expenses.push(expenseItem);
 
         // Create DOM elements for display
@@ -138,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add event listener to trash icon
         trashIcon.addEventListener('click', () => {
-            // Remove item from the list and array
             const index = expenses.indexOf(expenseItem);
             if (index > -1) {
                 expenses.splice(index, 1);
@@ -164,13 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add event listener to edit icon
         editIcon.addEventListener('click', () => {
-            // Open a prompt or modal to edit the item
             const newDescription = prompt('Enter new description:', description);
             const newValue = parseFloat(prompt('Enter new value:', value));
             const newDate = prompt('Enter new date (YYYY-MM-DD):', date);
 
             if (newDescription && !isNaN(newValue) && newValue > 0 && newDate) {
-                // Update item
                 descDiv.innerText = `${type}: ${newDescription}`;
                 valueDiv.innerHTML = `&#163;${newValue.toFixed(2)}`;
                 dateDiv.innerText = `Date: ${newDate}`; 
@@ -214,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 updateBudgetDisplay();
-                updatePieChart(); // Update the pie chart with the new values
+                updatePieChart(); 
             } else {
                 alert('Please enter valid description, value, and date.');
             }
@@ -275,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateBudgetDisplay();
             updatePieChart(); // Update the pie chart with the new values
 
-            // Show download button if not already visible
+            // Showing download button if not already visible
             updateDownloadButtonVisibility();
         } else {
             alert('Please enter a valid description, value, and date.');
