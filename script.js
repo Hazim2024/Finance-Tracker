@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalBudget -= value;
                 categories.Savings -= value;
             } else if (type === 'Investment') {
-                totalBudget -= value;
+                totalBudget += value;
                 categories.Investment -= value;
             }
 
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalBudget += newValue - value;
                     categories.Savings += newValue - value;
                 } else if (type === 'Investment') {
-                    totalBudget += newValue - value;
+                    totalBudget -= newValue - value;
                     categories.Investment += newValue - value;
                 }
 
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalBudget += value;
                 categories.Savings += value;
             } else if (currentType === 'Investment') {
-                totalBudget += value;
+                totalBudget -= value;
                 categories.Investment += value;
             }
 
